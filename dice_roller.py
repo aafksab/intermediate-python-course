@@ -1,8 +1,15 @@
 import random
+import argparse
 
-def main():
-  dice_rolls = int(input('How many dice would you like to roll? '))
-  dice_size = int(input('How many sides are the dice? '))
+parser = argparse.ArgumentParser(description='Args for Dice Rolling')
+parser.add_argument('--rolls', dest='dice_rolls', type=int, help='Number of dice to roll')
+parser.add_argument('--size', dest='dice_size', type=int, help='Size of dice to roll')
+args = parser.parse_args()
+
+dice_rolls = args.dice_rolls
+dice_size = args.dice_size
+
+def main(dice_rolls,dice_size):
   dice_sum = 0
   for i in range(0,dice_rolls):
     roll = random.randint(1,dice_size)
@@ -16,4 +23,4 @@ def main():
     
   print(f'You have rolled a total of {dice_sum}')
 if __name__== "__main__":
-  main()
+  main(dice_rolls,dice_size)
